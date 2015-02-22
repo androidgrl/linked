@@ -133,6 +133,78 @@ class IterativeLinkedListTest < Minitest::Test
 end
 
 class RecursiveLinkedListTest < Minitest::Test
+
+  def test_it_exists
+    assert RecursiveLinkedList
+  end
+
+  def test_it_starts_out_without_a_head_node
+    list = RecursiveLinkedList.new
+
+    refute list.head
+  end
+
+  def test_it_can_append_onto_an_empty_list
+    list = RecursiveLinkedList.new
+
+    list.recursive_append("Jamie")
+
+    assert_equal "Jamie", list.head.data
+  end
+
+  def test_it_can_append_onto_a_single_node_list
+    list = RecursiveLinkedList.new
+
+    list.recursive_append("Jamie")
+    list.recursive_append("Bob")
+
+    assert_equal "Bob", list.head.next_node.data
+  end
+
+  def test_it_can_count_an_empty_list
+    list = RecursiveLinkedList.new
+
+    assert_equal 0, list.recursive_count
+  end
+
+  def test_it_can_count_a_single_node_list
+    list = RecursiveLinkedList.new
+
+    list.recursive_append("Jamie")
+
+    assert_equal 1, list.recursive_count
+  end
+
+  def test_it_can_count_a_double_node_list
+    list = RecursiveLinkedList.new
+
+    list.recursive_append("Jamie")
+    list.recursive_append("Bob")
+
+    assert_equal 2, list.recursive_count
+  end
+
+  def test_it_can_count_a_triple_node_list
+    skip
+    list = RecursiveLinkedList.new
+
+    list.recursive_append("Jamie")
+    list.recursive_append("Bob")
+    list.recursive_append("Mary")
+
+    assert_equal 3, list.recursive_count
+  end
+
+  def test_it_can_append_onto_a_double_node_list
+    skip
+    list = RecursiveLinkedList.new
+
+    list.recursive_append("Jamie")
+    list.recursive_append("Bob")
+    list.recursive_append("Mark")
+
+    assert_equal "Mark", list.head.next_node.next_node.data
+  end
 end
 
 class NodeTest < Minitest::Test

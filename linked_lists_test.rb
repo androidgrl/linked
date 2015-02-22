@@ -185,7 +185,6 @@ class RecursiveLinkedListTest < Minitest::Test
   end
 
   def test_it_can_count_a_triple_node_list
-    skip
     list = RecursiveLinkedList.new
 
     list.recursive_append("Jamie")
@@ -196,7 +195,6 @@ class RecursiveLinkedListTest < Minitest::Test
   end
 
   def test_it_can_append_onto_a_double_node_list
-    skip
     list = RecursiveLinkedList.new
 
     list.recursive_append("Jamie")

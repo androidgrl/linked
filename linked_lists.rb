@@ -90,15 +90,14 @@ class RecursiveLinkedList
 
   def recursive_append(data, current = head)
     node = Node.new(data)
-    if head.nil?
+    if current.nil?
       @head = node
-    elsif head.next_node.nil?
-      @head.next_node = node
-    elsif current.nil?
-      current = node
-      current
-    elsif current.next_node
-      recursive_append(data, current.next_node)
+    else
+      if current.next_node
+        recursive_append(data, current.next_node)
+      else
+        current.next_node = node
+      end
     end
   end
 

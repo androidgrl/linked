@@ -39,7 +39,7 @@ class IterativeLinkedList
     if head.nil?
       nil
     elsif head.next_node.nil?
-      head.next_node
+      head
     else
       current_node = head
       while current_node.next_node
@@ -101,6 +101,16 @@ class RecursiveLinkedList
     end
   end
 
+  # def recursive_insert(data, current =head)
+  #   require 'pry'; binding.pry
+  #   node = Node.new(data, current.next_node)
+  #   if node == @head
+  #     return
+  #   else
+  #     recursive_insert(current, data)
+  #   end
+  # end
+
   def recursive_count(node = head)
     if node.nil?
       0
@@ -108,6 +118,9 @@ class RecursiveLinkedList
       1 + recursive_count(node.next_node)
     end
   end
+
+  # def find()
+  # end
 
 end
 
@@ -128,8 +141,9 @@ if __FILE__ == $0
  list.recursive_append("Jamie")
  list.recursive_append("Mike")
  list.recursive_append("Andrew")
- list.recursive_append("Jeff")
- puts list.head.next_node.data
+ list.recursive_insert("Jeff", "Jamie")
+ puts list.head
+ puts list.head.next_node
  puts list.recursive_count
 end
 

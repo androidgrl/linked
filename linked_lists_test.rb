@@ -74,7 +74,13 @@ class IterativeLinkedListTest < Minitest::Test
     assert_equal 4, list.count
   end
 
-  def test_tail_can_return_last_node
+  def test_tail_can_return_last_node_from_one_node_list
+    list.append("Jamie")
+
+    assert_equal "Jamie", list.tail.data
+  end
+
+  def test_tail_can_return_last_node_from_four_node_list
     list.append("Jamie")
     list.append("Douglas")
     list.append("Dave")
@@ -110,6 +116,12 @@ class IterativeLinkedListTest < Minitest::Test
   def test_it_can_access_an_element_by_numeric_position_for_a_single_node_list
     list.append("Jamie")
     assert_equal "Jamie", list.access(0)
+  end
+
+  def test_it_can_access_an_element_by_numeric_position_for_a_double_node_list
+    list.append("Jamie")
+    list.append("Bob")
+    assert_equal "Bob", list.access(1)
   end
 
   def test_it_can_access_an_element_by_its_numeric_position_for_three_node_list

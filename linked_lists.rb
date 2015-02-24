@@ -78,19 +78,6 @@ class IterativeLinkedList
       current_node.data
     end
   end
-
-  def shift
-    if head.nil?
-      nil
-    elsif
-      head.next_node.nil?
-      head.data
-    else
-      old_head = head
-      head = head.next_node
-      old_head.data
-    end
-  end
 end
 
 

@@ -215,6 +215,27 @@ class RecursiveLinkedListTest < Minitest::Test
 
     assert_equal "Mark", list.head.next_node.next_node.data
   end
+
+  def test_it_can_pop_the_last_element_from_the_list
+    list = RecursiveLinkedList.new
+
+    list.recursive_append("Jamie")
+    list.recursive_append("Bob")
+    list.recursive_append("Mark")
+    list.recursive_pop
+
+    assert_equal 2, list.recursive_count
+  end
+
+  def test_it_can_access_an_element_by_its_numeric_position
+    list = RecursiveLinkedList.new
+
+    list.recursive_append("Jamie")
+    list.recursive_append("Bob")
+    list.recursive_append("Mark")
+
+    assert_equal "Mark", list.recursive_position(2)
+  end
 end
 
 class NodeTest < Minitest::Test

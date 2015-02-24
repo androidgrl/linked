@@ -9,7 +9,7 @@ class IterativeLinkedList
   def append(data)
     node = Node.new(data)
     if head.nil?
-      @head = node
+      @head = node #if used accessor, then you would say self.head
     else
       current_node = head
       while current_node.next_node
@@ -78,6 +78,19 @@ class IterativeLinkedList
       current_node.data
     end
   end
+
+  def shift
+    if head.nil?
+      nil
+    elsif
+      head.next_node.nil?
+      head.data
+    else
+      old_head = head
+      head = head.next_node
+      old_head.data
+    end
+  end
 end
 
 
@@ -101,16 +114,6 @@ class RecursiveLinkedList
     end
   end
 
-  # def recursive_insert(data, current =head)
-  #   require 'pry'; binding.pry
-  #   node = Node.new(data, current.next_node)
-  #   if node == @head
-  #     return
-  #   else
-  #     recursive_insert(current, data)
-  #   end
-  # end
-
   def recursive_count(node = head)
     if node.nil?
       0
@@ -119,8 +122,25 @@ class RecursiveLinkedList
     end
   end
 
-  # def find()
-  # end
+  def recursive_pop(current = head)
+    if current.nil?
+      @head = nil
+    elsif current.next_node && current.next_node.next_node.nil?
+      current.next_node = nil
+    else
+      recursive_pop(current.next_node)
+    end
+  end
+
+  def recursive_position(index, current = head)
+    return nil unless current #early exit
+    if index == 0
+      current.data
+    else
+      recursive_position(index - 1, current.next_node) #making the positions relative and moving the zero point
+    end
+  end
+
 
 end
 
@@ -156,6 +176,21 @@ end
 # access the "tail" (last element) of the list
 # "pop" an element from the end of the list
 # access an element by numeric position (as with an array index)
+#extras from challenge
+# Pop the "first" element (head gets removed, second element becomes head)
+# Push an element onto the beginning of the list (first element becomes second element)
+# Remove the (first occurance | all occurances) of an element by data content
+# Remove an element by position
+# Insert an element at an arbitrary position
+# Add an element after a known node
+# Find whether a data element is or is not in the list
+# Find the distance between two nodes
+
+
+
+
+
+
 
 ## extras distance between two nodes
 #dequeue delete head node

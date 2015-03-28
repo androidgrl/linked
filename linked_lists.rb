@@ -9,7 +9,7 @@ class IterativeLinkedList
   def append(data)
     node = Node.new(data)
     if head.nil?
-      @head = node #if used accessor, then you would say self.head
+      @head = node
     else
       current_node = head
       while current_node.next_node
@@ -72,7 +72,7 @@ class IterativeLinkedList
       head.data
     else
       current_node = head
-      index.times do
+      (index-1).times do
         current_node = current_node.next_node
       end
       current_node.data
@@ -101,11 +101,11 @@ class RecursiveLinkedList
     end
   end
 
-  def recursive_count(node = head)
+  def recursive_count (node = head)
     if node.nil?
-      0
+       0
     else
-      1 + recursive_count(node.next_node)
+       1 + recursive_count(node.next_node)
     end
   end
 
@@ -120,15 +120,22 @@ class RecursiveLinkedList
   end
 
   def recursive_position(index, current = head)
-    return nil unless current #early exit
+    return nil unless current
     if index == 0
       current.data
     else
-      recursive_position(index - 1, current.next_node) #making the positions relative and moving the zero point
+      recursive_position(index - 1, current.next_node)
     end
   end
 
-
+  def recursive_delete(index, current = head)
+    return nil unless current
+    if index == 1
+      @head = current.next_node
+    else
+      recursive_delete(index-1, current.next_node)
+    end
+  end
 end
 
 
@@ -141,68 +148,3 @@ class Node
     @next_node = next_node
   end
 end
-
-
-if __FILE__ == $0
- list = RecursiveLinkedList.new
- list.recursive_append("Jamie")
- list.recursive_append("Mike")
- list.recursive_append("Andrew")
- list.recursive_insert("Jeff", "Jamie")
- puts list.head
- puts list.head.next_node
- puts list.recursive_count
-end
-
-
-
-
-
-# "append" elements to the end of the list
-# Count the number of the elements in the list
-# access the "tail" (last element) of the list
-# "pop" an element from the end of the list
-# access an element by numeric position (as with an array index)
-#extras from challenge
-# Pop the "first" element (head gets removed, second element becomes head)
-# Push an element onto the beginning of the list (first element becomes second element)
-# Remove the (first occurance | all occurances) of an element by data content
-# Remove an element by position
-# Insert an element at an arbitrary position
-# Add an element after a known node
-# Find whether a data element is or is not in the list
-# Find the distance between two nodes
-
-
-
-
-
-
-
-## extras distance between two nodes
-#dequeue delete head node
-#delete a selected element
-#https://github.com/mikedao/linked_lists
-#https://vimeo.com/turing
-#https://vimeo.com/117724281 iterating linked lists iteratively
-
-# from Horace's class outline
-#Pop the "first" element (head gets removed, second element becomes head)
-# Push an element onto the beginning of the list (first element becomes second element)
-# Remove the (first occurance | all occurances) of an element by data content
-# Remove an element by position
-# Insert an element at an arbitrary position
-# Add an element after a known node
-# Find whether a data element is or is not in the list
-# Find the distance between two nodes
-
-
-# Insert elements
-# Pop an element from the end
-# Push an element onto the beginning
-# Remove the (first occurance | all occurances) of an element by data content
-# Remove an element by position
-# Add an element at an arbitrary position
-# Add an element after a known node
-# Find whether a data element is or is not in the list
-# Find the distance between two nodes

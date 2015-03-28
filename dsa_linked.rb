@@ -1,4 +1,7 @@
+
+self
 class LinkedList
+  self
   attr_reader :head
 
   def count
@@ -11,9 +14,8 @@ class LinkedList
   end
 
   def push(data)
-    #need to make a new node to house data because lists don't deal with data
     node = Node.new(data)
-    if head.nil? #if don't have head then we assign head the node
+    if head.nil?
       @head = node
     else
       current = head
@@ -26,7 +28,7 @@ class LinkedList
 
 
 
-  def recursive_count(node = head) #using arguments to keep track of of the current node
+  def recursive_count(node = head) 
     if node.nil?
       0
     else
@@ -66,12 +68,13 @@ class LinkedList
       rec_pop(node.next_node)
     end
   end
-
+self
 
 end
-
+self
 
 class Node
+  self
   attr_accessor :data, :next_node
 
   def initialize(data)

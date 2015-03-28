@@ -5,7 +5,7 @@ require_relative "linked_lists"
 
 class IterativeLinkedListTest < Minitest::Test
   attr_reader :list
-  
+
   def setup
     @list = IterativeLinkedList.new
   end
@@ -239,7 +239,7 @@ class RecursiveLinkedListTest < Minitest::Test
 end
 
 class NodeTest < Minitest::Test
-  attr_reader :node   # you do this to be able to type node without the @, and can now access instance variable from outside of the class
+  attr_reader :node   
 
   def test_node_exists
     @node = Node.new("Jamie", next_node=nil)
